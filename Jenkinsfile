@@ -175,6 +175,10 @@ pipeline {
 
                     script {
 
+                        sh "curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst"
+                        sh "chmod +x envsubst"
+                        sh "sudo mv envsubst /usr/local/bin"
+
                         sh "envsubst"
 
                     }
