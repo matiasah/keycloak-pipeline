@@ -187,6 +187,8 @@ pipeline {
                         done
                         '''
 
+                        sh "cat custom-resource/virtualservice.yaml"
+
                         // Kustomize
                         sh "kustomize build > keycloak-template.yaml"
 
