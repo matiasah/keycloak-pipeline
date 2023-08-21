@@ -16,6 +16,9 @@ spec:
     rewrite:
       uri: /keycloak/
     headers:
+      request:
+        add:
+          X-Forwarded-Proto: "https"
       response:
         remove:
           - "Content-Security-Policy"
