@@ -180,6 +180,7 @@ pipeline {
 
                         // Add execution permission to envsubst
                         sh "chmod +x envsubst"
+                        sh "ls -l -a"
     
                         sh '''
                         for file in /custom-resource/*; do
