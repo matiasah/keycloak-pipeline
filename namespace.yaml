@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   labels:
     sidecar.istio.io/inject: "true"
-  name: istio-system
+  name: keycloak
