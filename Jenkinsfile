@@ -31,6 +31,7 @@ pipeline {
         string(description: "Istio Ingress Gateway", name: "ISTIO_INGRESS_GATEWAY", defaultValue: env.ISTIO_INGRESS_GATEWAY ? env.ISTIO_INGRESS_GATEWAY : '')
         string(description: "Istio Host", name: "ISTIO_HOST", defaultValue: env.ISTIO_HOST ? env.ISTIO_HOST : '')
         booleanParam(description: "Debug", name: "DEBUG", defaultValue: env.DEBUG ? env.DEBUG : "false")
+        booleanParam(description: "Restart", name: "RESTART", defaultValue: env.RESTART ? env.RESTART : "false")
     }
 
     agent {
@@ -254,7 +255,7 @@ pipeline {
             when {
                 
                 expression {
-                    return !env.ACTION.equals("Plan")
+                    return !env.ACTION.equals("Plan") && env.RESTART.equals("true")
                 }
                 
             }
