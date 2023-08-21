@@ -182,8 +182,9 @@ pipeline {
                         sh "ls -l -a"
     
                         sh '''
+                        export ISTIO_INGRESS_GATEWAY=''' + ISTIO_INGRESS_GATEWAY + '''
+                        export ISTIO_HOST=''' + ISTIO_HOST + '''
                         for file in ./custom-resource/*; do
-                            echo "${file}"
                             ./envsubst < "${file}" > out.txt && mv out.txt "${file}";
                         done
                         '''
