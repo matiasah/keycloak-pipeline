@@ -156,6 +156,10 @@ pipeline {
                         KEYCLOAK_OPTIONS += "--set externalDatabase.user=${env.MARIADB_USERNAME} "
                         KEYCLOAK_OPTIONS += "--set externalDatabase.password=${env.MARIADB_USERPASSWORD} "
                         KEYCLOAK_OPTIONS += "--set externalDatabase.database=${env.MARIADB_DATABASE} "
+                        KEYCLOAK_OPTIONS += "--set extraEnvVars[0].name=\"KC_DB\" "
+                        KEYCLOAK_OPTIONS += "--set extraEnvVars[0].value=\"mariadb\" "
+                        KEYCLOAK_OPTIONS += "--set extraEnvVars[1].name=\"KC_DB_URL\" "
+                        KEYCLOAK_OPTIONS += "--set extraEnvVars[1].value=\"jdbc:mariadb://${env.MARIADB_HOST}/${env.MARIADB_DATABASE}\" "
 
                         // Template
                         sh "helm template mariadb bitnami/keycloak -f keycloak-values.yaml ${MARIADB_OPTIONS.trim()} --namespace keycloak > keycloak-template.yaml"
