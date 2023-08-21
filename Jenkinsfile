@@ -171,6 +171,16 @@ pipeline {
 
                 }
 
+                container("kustomize") {
+
+                    script {
+
+                        sh "envsubst"
+
+                    }
+
+                }
+
             }
 
         }
@@ -214,16 +224,6 @@ pipeline {
                         }
 
                         sh "rm keycloak-template.yaml"
-
-                    }
-
-                }
-
-                container("kustomize") {
-
-                    script {
-
-                        sh "envsubst"
 
                     }
 
