@@ -183,7 +183,7 @@ pipeline {
     
                         sh '''
                         for file in ./custom-resource/*; do
-                            ./envsubst < "${file}" > "${file}";
+                            ./envsubst < "${file}" > out.txt && mv out.txt "${file}";
                         done
                         '''
 
