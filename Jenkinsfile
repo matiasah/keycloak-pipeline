@@ -219,6 +219,16 @@ pipeline {
 
                 }
 
+                container("kustomize") {
+
+                    script {
+
+                        sh "envsubst"
+
+                    }
+
+                }
+
             }
 
         }
