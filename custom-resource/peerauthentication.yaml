@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: primary-keycloak
+  namespace: keycloak
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: keycloak
+      app.kubernetes.io/instance: primary
+      app.kubernetes.io/name: keycloak
+  mtls:
+    mode: STRICT
