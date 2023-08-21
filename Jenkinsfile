@@ -164,9 +164,6 @@ pipeline {
                         // Template
                         sh "helm template primary bitnami/keycloak -f keycloak-values.yaml ${KEYCLOAK_OPTIONS.trim()} --namespace keycloak > keycloak-base.yaml"
 
-                        // Print Yaml
-                        sh "cat keycloak-base.yaml"
-
                     }
 
                 }
