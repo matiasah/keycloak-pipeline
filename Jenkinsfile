@@ -123,7 +123,7 @@ pipeline {
                     script {
 
                         // Apply
-                        sh "kubectl create namespace keycloak --dry-run=client -o yaml | kubectl apply -f -"
+                        sh "kubectl apply -f namespace.yaml"
 
                     }
 
