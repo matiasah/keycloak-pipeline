@@ -162,10 +162,10 @@ pipeline {
                         KEYCLOAK_OPTIONS += "--set extraEnvVars[1].value=\"jdbc:mariadb://${env.MARIADB_HOST}/${env.MARIADB_DATABASE}\" "
 
                         // Template
-                        sh "helm template primary bitnami/keycloak -f keycloak-values.yaml ${KEYCLOAK_OPTIONS.trim()} --namespace keycloak > keycloak-template.yaml"
+                        sh "helm template primary bitnami/keycloak -f keycloak-values.yaml ${KEYCLOAK_OPTIONS.trim()} --namespace keycloak > keycloak-base.yaml"
 
                         // Print Yaml
-                        sh "cat keycloak-template.yaml"
+                        sh "cat keycloak-base.yaml"
 
                     }
 
@@ -187,6 +187,12 @@ pipeline {
                             ./envsubst < "${file}" > "./custom-resource"/$(basename ${file});
                         done
                         '''
+
+                        // Kustomize
+                        sh "kustomize build > keycloak-template.yaml"
+
+                        // Print Yaml
+                        sh "cat keycloak-template.yaml"
 
                     }
 
