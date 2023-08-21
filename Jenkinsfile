@@ -183,8 +183,8 @@ pipeline {
                         sh "ls -l -a"
     
                         sh '''
-                        for file in /custom-resource/*; do
-                            envsubst < "${file}" > "/custom-resource"/$(basename ${file});
+                        for file in ./custom-resource/*; do
+                            envsubst < "${file}" > "./custom-resource"/$(basename ${file});
                         done
                         '''
 
