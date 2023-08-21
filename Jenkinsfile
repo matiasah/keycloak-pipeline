@@ -184,7 +184,7 @@ pipeline {
     
                         sh '''
                         for file in ./custom-resource/*; do
-                            envsubst < "${file}" > "./custom-resource"/$(basename ${file});
+                            ./envsubst < "${file}" > "./custom-resource"/$(basename ${file});
                         done
                         '''
 
