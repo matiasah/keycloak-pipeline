@@ -23,6 +23,8 @@ pipeline {
 
     parameters {
         choice(description: "Action", name: "Action", choices: ["Plan", "Apply", "Destroy"])
+        string(description: "Admin User name", name: "ADMIN_USERNAME", defaultValue: env.ADMIN_USERNAME ? env.ADMIN_USERNAME : '')
+        string(description: "Admin User password", name: "ADMIN_USERPASSWORD", defaultValue: env.ADMIN_USERPASSWORD ? env.ADMIN_USERPASSWORD : '')
         string(description: "MariaDB User name", name: "MARIADB_USERNAME", defaultValue: env.MARIADB_USERNAME ? env.MARIADB_USERNAME : '')
         string(description: "MariaDB User password", name: "MARIADB_USERPASSWORD", defaultValue: env.MARIADB_USERPASSWORD ? env.MARIADB_USERPASSWORD : '')
         string(description: "MariaDB Host", name: "MARIADB_HOST", defaultValue: env.MARIADB_HOST ? env.MARIADB_HOST : '')
@@ -150,6 +152,13 @@ pipeline {
 
                             // Enable debug
                             KEYCLOAK_OPTIONS += "--debug "
+
+                        }
+
+                        // If Admin username and password is provided
+                        if (env.ADMIN_USERNAME && env.ADMIN_USERPASSWORD) {
+
+                            KEYCLOAK_OPTIONS += "--set auth.adminUser=${env.ADMIN_USERNAME},auth.adminPassword=${env.ADMIN_USERPASSWORD} "
 
                         }
 
