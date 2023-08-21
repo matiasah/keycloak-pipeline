@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argo-rollouts-dashboard
+  namespace: argo-rollouts
+spec:
+  gateways:
+  - '$ISTIO_INGRESS_GATEWAY'
+  hosts:
+  - '$ISTIO_HOST'
+  http:
+  - match:
+    - uri:
+        prefix: /keycloak/
+    name: http
+    rewrite:
+      uri: /keycloak/
+    route:
+    - destination:
+        host: primary-keycloak.keycloak.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
