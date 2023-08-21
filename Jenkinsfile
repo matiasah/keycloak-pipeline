@@ -175,11 +175,17 @@ pipeline {
 
                     script {
 
+                        // Download envsubst
                         httpRequest url: "https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-Linux-x86_64", outputFile: "envsubst"
 
+                        // Add execution permission to envsubst
                         sh "chmod +x envsubst"
-                        sh "mv envsubst /usr/local/bin"
-                        sh "envsubst"
+    
+                        sh '''
+                        for file in /custom-resource/*; do
+                            envsubst < "${file}" > "/custom-resource"/$(basename ${file});
+                        done
+                        '''
 
                     }
 
