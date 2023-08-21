@@ -166,7 +166,7 @@ pipeline {
 
                         // Print Yaml
                         sh "cat keycloak-template.yaml"
-        
+
                     }
 
                 }
@@ -175,10 +175,10 @@ pipeline {
 
                     script {
 
-                        sh "curl -L https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst"
+                        httpRequest url: "https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-Linux-x86_64", outputFile: "envsubst"
+
                         sh "chmod +x envsubst"
                         sh "sudo mv envsubst /usr/local/bin"
-
                         sh "envsubst"
 
                     }
