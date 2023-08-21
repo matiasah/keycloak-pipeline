@@ -15,6 +15,10 @@ spec:
     name: http
     rewrite:
       uri: /keycloak/
+    headers:
+      response:
+        remove:
+          - "Content-Security-Policy"
     route:
     - destination:
         host: primary-keycloak.keycloak.svc.cluster.local
