@@ -28,6 +28,8 @@ pipeline {
         string(description: "MariaDB Host", name: "MARIADB_HOST", defaultValue: env.MARIADB_HOST ? env.MARIADB_HOST : '')
         string(description: "MariaDB Port", name: "MARIADB_PORT", defaultValue: env.MARIADB_PORT ? env.MARIADB_PORT : '')
         string(description: "MariaDB Database", name: "MARIADB_DATABASE", defaultValue: env.MARIADB_DATABASE ? env.MARIADB_DATABASE : '')
+        string(description: "Istio Ingress Gateway", name: "ISTIO_INGRESS_GATEWAY", defaultValue: env.ISTIO_INGRESS_GATEWAY ? env.ISTIO_INGRESS_GATEWAY : '')
+        string(description: "Istio Host", name: "ISTIO_HOST", defaultValue: env.ISTIO_HOST ? env.ISTIO_HOST : '')
         booleanParam(description: "Debug", name: "DEBUG", defaultValue: env.DEBUG ? env.DEBUG : "false")
     }
 
