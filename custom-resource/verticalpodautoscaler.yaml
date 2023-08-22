@@ -5,14 +5,14 @@ metadata:
   namespace: keycloak
 spec:
   targetRef:
-    apiVersion: "apps/v1"
-    kind: "StatefulSet"
-    name: "primary-keycloak"
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: primary-keycloak
   updatePolicy:
     updateMode: "Auto"
   resourcePolicy:
     containerPolicies:
-    - containerName: "keycloak"
+    - containerName: keycloak
       minAllowed:
         cpu: 200m
         memory: 800Mi
