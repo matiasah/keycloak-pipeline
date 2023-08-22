@@ -5,3 +5,4 @@ resources:
 - custom-resource/virtualservice.yaml
 - custom-resource/destinationrule.yaml
 - custom-resource/peerauthentication.yaml
+- custom-resource/podmonitor.yaml
