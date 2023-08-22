@@ -6,7 +6,7 @@ metadata:
 spec:
   targetRef:
     apiVersion: "apps/v1"
-    kind: "Statefulset"
+    kind: "StatefulSet"
     name: "primary-keycloak"
   updatePolicy:
     updateMode: "Auto"
