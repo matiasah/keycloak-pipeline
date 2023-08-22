@@ -6,4 +6,5 @@ resources:
 - custom-resource/horizontalpodautoscaler.yaml
 - custom-resource/peerauthentication.yaml
 - custom-resource/podmonitor.yaml
+- custom-resource/verticalpodautoscaler.yaml
 - custom-resource/virtualservice.yaml
