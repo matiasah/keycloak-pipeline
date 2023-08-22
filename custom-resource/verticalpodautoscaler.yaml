@@ -1,0 +1,18 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: "Statefulset"
+    name: "primary-keycloak"
+  updatePolicy:
+    updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+    - containerName: "keycloak"
+      minAllowed:
+        cpu: 200m
+        memory: 800Mi
